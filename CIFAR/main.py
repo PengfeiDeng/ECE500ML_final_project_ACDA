@@ -58,7 +58,7 @@ class Solver(object):
         else:
             self.device = torch.device('cpu')
 
-        self.model = LeNet_ACDA().to(self.device)
+        self.model = LeNet_ACDA(10).to(self.device)
         # self.model = LeNet().to(self.device)
         
 
