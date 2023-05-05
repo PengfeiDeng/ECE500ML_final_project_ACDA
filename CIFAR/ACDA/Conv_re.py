@@ -47,10 +47,10 @@ class ACDA(nn.Module):
         y_grid, x_grid = torch.meshgrid(torch.linspace(-1, 1, height), torch.linspace(-1, 1, width))
         position_grid = torch.stack((x_grid, y_grid), dim=2).unsqueeze(0).to(x.device)
 
-        # Calculate the spatial attention map
+        # Calculate the spatial compositional coefficients
         spatial_att = torch.exp(-((position_grid.view(1, 1, height, width, 2) - self.position_encoding.view(1, self.spatial_atoms, 1, 1, 2)) ** 2).sum(dim=-1))
 
-        # Combine filters and spatial attention
+        # Combine filters and spatial compositional coefficients
         combined_filters = (filters * spatial_att.view(1, 1, self.spatial_atoms, 1, height, width)).sum(dim=2)
         combined_filters = combined_filters.view(batch_size, self.out_channels, self.kernel_size * self.kernel_size, height, width)
 
