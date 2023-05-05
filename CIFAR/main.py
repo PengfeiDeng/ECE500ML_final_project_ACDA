@@ -62,6 +62,7 @@ class Solver(object):
         # self.model = LeNet(10).to(self.device)
         # self.model = ResNet18().to(self.device)
         # self.model = ResNet18_AD().to(self.device)
+        # self.model = AlexNet().to(self.device)
 
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
         self.scheduler = optim.lr_scheduler.MultiStepLR(self.optimizer, milestones=[75, 150], gamma=0.5)
