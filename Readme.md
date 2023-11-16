@@ -64,3 +64,14 @@ After removing or adding the corresponding layers, run main.py again to get the 
         x =  self.attention(self.norm1(x))
         x =  self.mlp(self.norm2(x))
 ```
+# 2. Describe
+The code framework was adapted from https://github.com/isk03276/simple-vit . 
+The utils has been used directly, while all the model files in ..\vision_transformer and main.py, fine-tune.py have been rewritten and modified accordingly:
+1. layer.py was written based on my own understanding, and different layers has been added for better performance.
+2. leaner.py has been added with leaner rate scheduler, and GradScaler, autocast replaced the original code for faster and better performance.
+3. Intermediate output after each block in model.py has been added for better visualization of the mechanism.
+4. In modules.py, PatchEmbedder has been rewritten based on my own understanding, and the encoder block has been simplified in a more straightforward way.
+5. The whole main.py has been rewritten in a more intuitive way and is my original code, and fine-tune.py was revised accordingly from the main.py.
+
+# 3. Datasets
+CIFAR-10 and CIFAR-100 were used in the whole project, and were downloaded directly by pytorch. 
